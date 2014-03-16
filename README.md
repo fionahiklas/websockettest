@@ -24,5 +24,8 @@ The code is split into three sections
 
 Since I wanted to muck around with several bits and pieces locally and don't want to keep su'ing to hack Apache config I enabled the mod_userdir module in userdir.conf so that I could symlink to my working code to play around.
 
+I have SELinux turned on and attempting to acccess the user directory caused an alert which needed to be fixed with the following command
+
+			setsebool -P httpd_read_user_content 1
 
 
