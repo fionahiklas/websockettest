@@ -2,7 +2,7 @@
   <head>
     <script type="text/javascript">
       window.onload = function() {
-        var webSocket = new WebSocket("ws://localhost:9000");
+        var webSocket = new WebSocket("ws://localhost/wsdev");
         webSocket.onmessage = function(e) {
           console.log("Got echo: " + e.data);
         }
