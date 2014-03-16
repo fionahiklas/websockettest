@@ -9,6 +9,15 @@ logging.basicConfig(level=logging.DEBUG)
 class EchoServerProtocol(WebSocketServerProtocol):
 	log = logging.getLogger("EchoServerProtocol")
 
+        def __init__(self):
+		self.log.debug("Instance initialisation")
+
+	def onConnect(self, request):
+		self.log.debug("Client connecting: "+request)
+
+	def onOpen(self):
+		self.log.debug("Opening web socket connection")
+
 	def onMessage(self, msg, binary):
                 log.debug("OnMessage: msg="+msg+" binary="+binary)
 		self.sendMessage(msg, binary)
@@ -22,7 +31,7 @@ if __name__ == '__main__':
 
 	mainLogger.debug("Setting protocol")
 	factory.protocol = EchoServerProtocol
-	listenWS(factory)
+	reactor.listenTCP(9000,factory)
 
 	mainLogger.debug("Running the reactor")
 	reactor.run()
