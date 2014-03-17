@@ -1,6 +1,6 @@
 import logging
 from twisted.internet import reactor
-from autobahn.twisted.websocket import WebSocketServerFactory, WebSocketServerProtocol, listenWS
+from autobahn.twisted.websocket import WebSocketServerFactory, WebSocketServerProtocol
 
 # Set debug logging level
 logging.basicConfig(level=logging.DEBUG)
@@ -27,7 +27,7 @@ mainLogger = logging.getLogger("main")
 
 if __name__ == '__main__':
         mainLogger.debug("Creating factory")
-	factory = WebSocketServerFactory("ws://localhost:9000", debug = False)
+	factory = WebSocketServerFactory("ws://localhost:9000", debug = True )
 
 	mainLogger.debug("Setting protocol")
 	factory.protocol = EchoServerProtocol

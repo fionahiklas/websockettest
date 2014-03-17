@@ -1,5 +1,9 @@
 ## README
 
+### IMPORTANT
+
+I couldn't get things to work very well with python2.7 and twisted, just kept getting HTTP 500's back from the server for no apparent reason.  Switched to using asyncio and python3.3 (pip install asyncio and pip install autobahn) and things are working better with the server responding and connecting.  However JavaScript still doesn't think webSocket is defined (not connected) so more coding needed.  Will update the code and README when done.
+
 ### Overview
 
 Simple test based on the [Autobhan tutorial](http://autobahn.ws/python/tutorials/echo/)
