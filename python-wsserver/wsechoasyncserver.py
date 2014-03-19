@@ -18,9 +18,14 @@
 
 from autobahn.asyncio.websocket import WebSocketServerProtocol, \
                                        WebSocketServerFactory
+import logging
 
+
+# Set debug logging level
+logging.basicConfig(level=logging.DEBUG)
 
 class MyServerProtocol(WebSocketServerProtocol):
+   log = logging.getLogger("MyServerProtocol")
 
    def onConnect(self, request):
       print("Client connecting: {0}".format(request.peer))
@@ -41,14 +46,18 @@ class MyServerProtocol(WebSocketServerProtocol):
       print("WebSocket connection closed: {0}".format(reason))
 
 
+# Main logger
+mainLogger = logging.getLogger("main")
 
 if __name__ == '__main__':
 
    import asyncio
 
+   mainLogger.debug("Creating factory")
    factory = WebSocketServerFactory("ws://localhost:9000", debug = False)
    factory.protocol = MyServerProtocol
 
+   mainLogger.debug("Getting loop")
    loop = asyncio.get_event_loop()
    coro = loop.create_server(factory, '127.0.0.1', 9000)
    server = loop.run_until_complete(coro)
