@@ -106,6 +106,16 @@ Open a browser window on http://localhost/~<user>/index.html (or morecomplex.htm
 
 
 
+### Messaging
+
+#### Setup
+
+* Install qpid and qmf
+
+			yum install qpid-cpp-server qpid-qmf
+
+* Install qpid for Python3
+
 
 
 
